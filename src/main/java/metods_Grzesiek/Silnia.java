@@ -25,4 +25,9 @@ public class Silnia {
                 : 1;
     }
 
+    public static void nowa(){
+        System.out.println("Nowa metoda");
+        System.out.println("Zmiany na nowym branchu");
+    }
+
 }

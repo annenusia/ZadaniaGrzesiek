@@ -1,5 +1,6 @@
 package metods_Grzesiek.bank;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Client {
@@ -15,7 +16,21 @@ public class Client {
         this.lastName = lastName;
         this.pesel = pesel;
         this.ID = ID;
+        accounts = new ArrayList<>();
     }
+    public Client(){
+
+    }
+
+    public Client(String fistName, String lastName, String pesel, String ID, String type) {
+        this.fistName = fistName;
+        this.lastName = lastName;
+        this.pesel = pesel;
+        this.ID = ID;
+        accounts = new ArrayList<>();
+        addAccount(new Account(type,0));
+    }
+
 
     public String getFistName() {
         return fistName;
@@ -50,6 +65,20 @@ public class Client {
     }
 
 
+    public boolean ClientAccountList(Account account) {return accounts.indexOf(account) >= 0;}
+
+    public void addAccount (Account account){
+        accounts.add(account);
+}
+
+    public boolean removeAccount (Account account){
+        if (account.getBalance() == 0){
+            System.out.println("Stan środków = 0, usunięcie konta: ");
+            return accounts.remove(account);
+        }
+        System.out.println("Nie można usunąć konta - saldo dodatnie!");
+        return false;
+}
 
 
 }

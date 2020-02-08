@@ -35,4 +35,14 @@ public class Bank {
    }
 
     public List<Client> getClients() {return clients;}
+
+    public boolean removeClient(Client client) {
+        if (!isClientInBank(client)){
+            System.out.println("Nie ma takiego klienta w banku");
+            return false;
+        }
+        System.out.println("Klient " + client.getFistName() + " " + client.getLastName()
+        + " został usunięty z listy klientów banku. ");
+        return clients.remove(client);
+    }
 }

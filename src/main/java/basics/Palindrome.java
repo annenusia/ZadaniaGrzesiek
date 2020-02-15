@@ -1,6 +1,4 @@
-package metods_Grzesiek;
-
-import java.util.Scanner;
+package basics;
 
 public class Palindrome {
     public static void main(String[] args) {

@@ -1,9 +1,14 @@
 package metods_Grzesiek.bank;
 
+import org.w3c.dom.ls.LSOutput;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Bank {
+
+    static Integer clientNumber = 0;
+    static Integer accountNumber = 0;
 
     String name;
     List<Client> clients;
@@ -15,34 +20,19 @@ public class Bank {
         opts = new ArrayList<>();
     }
 
+    public Bank() {
+
+    }
+
     public String getName() {
         return name;
     }
 
       public boolean isClientInBank(Client client) {
-        return clients.indexOf(client) >= 0;
+        return clients.contains(client);
       }
-
-   public boolean addClientToBank(Client client){
-        if (isClientInBank(client)){
-            System.out.println("Osoba " + client.getFistName() + " " + client.getLastName()
-            + " jest już klientem banku");
-            return false;
-        }
-       System.out.println("Klient " + client.getFistName() + " " + client.getLastName()
-               + " został dodany do Banku");
-        return clients.add(client);
-   }
 
     public List<Client> getClients() {return clients;}
 
-    public boolean removeClient(Client client) {
-        if (!isClientInBank(client)){
-            System.out.println("Nie ma takiego klienta w banku");
-            return false;
-        }
-        System.out.println("Klient " + client.getFistName() + " " + client.getLastName()
-        + " został usunięty z listy klientów banku. ");
-        return clients.remove(client);
-    }
+
 }

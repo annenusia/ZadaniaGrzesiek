@@ -1,5 +1,6 @@
 package metods_Grzesiek;
 
+import basics.Silnia;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

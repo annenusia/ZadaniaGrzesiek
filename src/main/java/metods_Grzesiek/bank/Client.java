@@ -2,6 +2,7 @@ package metods_Grzesiek.bank;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Client {
 
@@ -22,13 +23,12 @@ public class Client {
 
     }
 
-    public Client(String fistName, String lastName, String pesel, String ID, String type) {
+    public Client(String fistName, String lastName, String pesel, String ID, AccountType accountType) {
         this.fistName = fistName;
         this.lastName = lastName;
         this.pesel = pesel;
         this.ID = ID;
         accounts = new ArrayList<>();
-        addAccount(new Account(type,0));
     }
 
 
@@ -64,21 +64,33 @@ public class Client {
         this.ID = ID;
     }
 
+    public List<Account> getAccounts() {
+        return accounts;
+    }
 
     public boolean ClientAccountList(Account account) {return accounts.indexOf(account) >= 0;}
 
-    public void addAccount (Account account){
-        accounts.add(account);
-}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+       Client client = (Client) o;
+        return Objects.equals(fistName, client.fistName) &&
+                Objects.equals(lastName, client.lastName);
+    }
 
-    public boolean removeAccount (Account account){
-        if (account.getBalance() == 0){
-            System.out.println("Stan środków = 0, usunięcie konta: ");
-            return accounts.remove(account);
-        }
-        System.out.println("Nie można usunąć konta - saldo dodatnie!");
-        return false;
-}
+    @Override
+    public int hashCode() {
+        return Objects.hash(fistName, lastName);
+    }
+
+    @Override
+    public String toString() {
+        return "name='" + fistName + '\'' +
+                ", surname='" + lastName;
+    }
 
 
 }

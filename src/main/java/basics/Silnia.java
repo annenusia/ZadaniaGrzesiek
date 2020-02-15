@@ -1,4 +1,4 @@
-package metods_Grzesiek;
+package basics;
 
 public class Silnia {
 
